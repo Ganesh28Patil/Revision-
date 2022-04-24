@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision | unit 2</title>
+</head>
+<body>
+    <input type="text" id="name">
+    <button onclick="addName()">submit</button>
+</body>
+<script>
+
+    function addName(){
+        console.log("AddName")
+        // let friend = name.values;
+
+     
+        var friend = document.getElementbyId("name").value;
+        var p = document.createElement('p');
+        p.innerText = friend;
+        document.body.append(p);
+        console.log('friend:', friend)
+
+    }
+
+    // local storage
+
+    var obj = {
+        name:"Ganesh",
+        age:28,
+        school: "masai school"
+    }
+    console.log('obj:', obj)
+
+    var jSonObj = JSON.stringify(obj);  // to convert simple object to json object  // to send
+    console.log('jSonObj:', jSonObj) ;  
+
+    var myObj = JSON.parse(jSonObj);    // to convert json object to simple  object  // to get
+    console.log('myObj:', myObj);
+
+
+    var dataBase = {
+        name:"swanand sir",
+    }
+    var jsonData = JSON.stringify(dataBase);
+    console.log('jsonData:', jsonData);
+
+    localStorage.setItem("jsChamp",jsonData);
+    // localStorage.setItem("jsChamp",JSON.stringify(dataBase));
+    JSON.stringify(dataBase) // ?
+    var getData = localStorage.getItem("jsChamp");
+    // var getData = JSON.parse(localStorage.getItem("jsChamp"));
+
+    console.log('getData:', getData)
+    console.log('getData:', JSON.parse(getData));
+
+
+
+    // 2 sum
+    console.log("2 sum");
+    
+    var nums = [2,7,11,15];
+var target = 9;
+var arr = [];
+for(var i = 0; i < nums.length; i++){
+        for(var j = i+1; j < nums.length; j++){
+                console.log(nums[i],nums[j],nums[i] + nums[j]);
+                var sum = nums[i] + nums[j];
+            if(sum == target){                
+                arr.push(i)
+                    console.log(arr);
+                arr.push(j);
+                    console.log(arr);
+                    
+                    console.log("i ",i,"j ",j); 
+                    break;
+            }
+        }
+}
+console.log("arr : ",arr);
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

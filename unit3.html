@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision | unit 3</title>
+</head>
+<body>
+    <h1>Hello JS</h1>
+
+    <a href="https://www.google.com/">Google</a>
+    <img src="" alt="">
+</body>
+<script>
+
+
+
+
+    // constructor method 
+
+    var person = {
+        name:'Rahul ',
+        concept:'constructor function',
+        myName:function(){
+            console.log(person.name);
+        },
+        learnConcept:function(){
+            console.log(person.concept);
+        }
+    }
+    person.myName();
+person.learnConcept();
+
+    // this
+
+    // In Method, this reffers to the owner object 
+    // In alone, this reffers to global object
+    // In function, this reffers to global object
+
+    var brother = {
+        name:'Ayaz',
+        myBroName:function(){
+            console.log(this.name);
+        }
+    }
+    brother.myBroName();
+
+    let dushmon = {
+        name:'Akash',
+        myDushmon:function(){
+        // console.log('name:', name)
+        console.log(this.name);
+            
+        }
+
+    }
+    dushmon.myDushmon();
+
+
+    // console.log(this);
+
+    function write(n){
+    //   console.log(this);// this reffer to  window (i.e GLobal Object)
+        console.log(n);
+    }
+    // write("wahid");
+    write(this);
+
+console.log("-------------------------");
+// how to create constructor method
+console.log('how to create constructor method:');
+
+function hotel(n,tNo){
+    this.orderName = n;
+    this.tableNo = tNo;
+}
+var shreeRath = new hotel("Dal Khichadi",23);
+console.log('shreeRath:', shreeRath);
+var mughals = new hotel("Chicken Tandoori",69);
+console.log('mughals:', mughals);
+/*
+shreeRath:
+ hotel {orderName: 'Dal Khichadi', tableNo: 23}
+orderName: "Dal Khichadi"
+tableNo: 23
+*/
+
+console.log("---------- constructor function------------");
+
+console.log(" CALL --- APPLY --- BIND ");
+var dost1 = {
+    name:"rahul",
+}
+
+var dost2 = {
+    name:"mahesh",
+}
+function myFrndName(){
+    console.log(this.name);  // this = person
+}
+myFrndName(); // it is just invoking the function
+myFrndName.call(dost2);  // this = dost2
+myFrndName.call(dost1);  // this = dost1
+
+
+
+//--------------------
+var person1 = {
+    name:"wahid",
+}
+var person2 = {
+    name:"Akash",
+}
+function showName(){
+    console.log(this.name);
+}
+function addDetail(a){
+  this.age = a;
+  console.log(this);
+}
+// showName(person1);
+// CALL  
+showName.call(person1);
+addDetail.call(person1,27);
+
+addDetail.call(person2,23);
+console.log('person2:', person2)
+
+// APPLY for apply we have to pass argument as array
+
+var dost = {
+    name:"Sachin",
+}
+var dushman = {
+    name:"Nrupul"
+}
+var dad = {
+    name:"Zawru"
+}
+function addData(m,n){
+    this.age = m,
+    this.landMark = n
+    // console.log(this);
+
+}
+
+addData.apply(dost,[28,"Panvelkar Rejency"]); //APPLY
+console.log('dost:', dost);
+
+addData.apply(dushman,[35,"Delhi & Banglore"]); // APPLY 
+console.log('dushman:', dushman);
+
+
+addData.bind(dad,60,"Vandrapada"); // BIND ?
+// dad(); // HOW DOES BIND WORK?
+console.log('dad:', dad);
+
+// -----------------------  eXample for constructor function
+console.log(" eXample for constructor function");
+
+// here how simple function works like 
+
+function nikeProd(n,p,t){
+    let item = {};
+    item.name = n;
+    item.price = p;
+    item.type = t;
+return item;
+}
+
+var order1 = nikeProd("T20",2000,"Shoes");
+console.log('order1:', order1)
+var order2 = nikeProd("laugage",1500,"bag");
+console.log('order2:', order2)
+
+
+// now see how constructor function works
+
+function addProd(n,p,t){
+    this.name = n;
+    this.price = p;
+    this.type = t;
+}
+let nikeProds = new addProd("s147",1250,"pant");
+console.log('nikeProds:', nikeProds);
+let pumaProd = new addProd("G40",2500,"shoes");
+console.log('pumaProd:', pumaProd)
+
+// Newspaper wala Example for constructor function
+console.log("Newspaper wala Example");
+
+
+ function newspaper(h,n){
+     this.date = new Date();
+     this.id = Math.random(Math.random()*100);
+     this.headLine = h;
+     this.name = n;
+ }
+
+ let paper = new newspaper("Akash got Jail","T.O.I");
+ let EcoTimes =  new newspaper("Akash got Tricog","Dainik Bhaskar");
+ console.log('paper:', paper);
+ console.log('EcoTimes:', EcoTimes);
+
+// Wrapper object
+console.log(' ------------------ Wrapper object:');
+
+let s = "pablo";
+console.log('s:', s);
+
+
+let str = new String("Pablo");
+console.log('str:', str)
+
+let arr = new Array(1,2,4,5,3,6);
+console.log('arr:', arr);
+
+
+
+//  Prototype 
+console.log('------------------   Prototype:');
+
+
+let vehicle = {
+    name:"Bike",
+}
+console.log('vehicle:', vehicle)
+
+let obj2 = Object.create(vehicle);
+obj2.speed = 250;
+console.log('obj2:', obj2);
+console.log(obj2.hasOwnProperty(vehicle));
+
+</script>
+</html>
